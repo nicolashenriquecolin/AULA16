@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- REACT LIBRARY -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Profile Card App</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      width: 250px;
+      text-align: center;
+      margin: 10px auto;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+    }
+
+    .card img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="raiz">Seu APP React vai substituir essa div</div>
+
+  <script type="text/babel">
+    // Componente funcional ProfileCard
+    function ProfileCard(props) {
+      return (
+        <div className="card">
+          <img src={props.imagemUrl} alt={`Foto de ${props.nome}`} />
+          <h2>{props.nome}</h2>
+          <p>{props.bio}</p>
+        </div>
+      );
+    }
+
+    // Componente principal App
+    function App() {
+      // Array de perfis
+      const perfis = [
+        {
+          id: 1,
+          nome: "Ana Souza",
+          bio: "Desenvolvedora Front-End apaixonada por React.",
+          imagemUrl:"https://media.istockphoto.com/id/1300304411/pt/foto/beautiful-smiling-african-ethnicity-businesswoman.jpg?s=612x612&w=0&k=20&c=JuNmxolZmZFvu-a0BxJgayKySdW9vfQWen9JUAgDCYg="
+        },
+        {
+          id: 2,
+          nome: "Carlos Silva",
+          bio: "UX Designer e entusiasta de tecnologia.",
+          imagemUrl:"https://media.licdn.com/dms/image/v2/C5603AQEr8etN_5w0wg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1602687442072?e=2147483647&v=beta&t=cCJ-F64bml-gL03i78wUsST6ji0tXIXsqtMw8d1r95o"
+        },
+        {
+          id: 3,
+          nome: "João Mendes",
+          bio: "Backend developer focado em APIs e Node.js.",
+          imagemUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfQHrC2h9tamfhs7RgqalnlYTswyq-poMzg&s"
+        }
+      ];
+
+      return (
+        <div>
+          <h1>Perfis</h1>
+          {perfis.map((perfil) => (
+            <ProfileCard
+              key={perfil.id}
+              nome={perfil.nome}
+              bio={perfil.bio}
+              imagemUrl={perfil.imagemUrl}
+            />
+          ))}
+        </div>
+      );
+    }
+
+    const elementoDoApp = document.getElementById("raiz");
+    const aplicacao = ReactDOM.createRoot(elementoDoApp);
+    aplicacao.render(<App />);
+  </script>
+</body>
+
+</html>

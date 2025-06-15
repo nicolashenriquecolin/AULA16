@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- REACT LIBRARY -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="raiz">Seu APP React vai substituir essa div</div>
+
+  <script type="text/babel">
+    function App() {
+      const desejos = ["Viajar para o Japão", "Aprender a programar games", "Comer pizza"];
+
+      return (
+        <div>
+          <h1>Minha Lista de Desejos</h1>
+          <ul>
+            {desejos.map((desejo, index) => (
+              <li key={index}>{desejo}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+
+    const elementoDoApp = document.getElementById("raiz");
+    const aplicacao = ReactDOM.createRoot(elementoDoApp);
+    aplicacao.render(<App />);
+  </script>
+</body>
+
+</html>
